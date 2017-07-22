@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org">
+<head th:replace="base :: eliana">
+    <meta charset="UTF-8" />
+    <title>Title</title>
+</head>
+<body>
+<div class="container">
+    <div class="jumbotron">
+    <nav class="navbar navbar-default" th:replace="base::mena"> </nav>
+    <table class="table table-hover" >
+        <tr>
+            <th>Product ID</th>
+            <th>Product Name</th>
+            <th>Price</th>
+            <th>Supplied By</th>
+            <th>Quantity</th>
+        </tr>
+        <tr th:each="link : ${EachList}">
+                <td th:text = "${link.id}"></td>
+                <td th:text = "${link.productName}"></td>
+                <td th:text = "${link.productPrice}"></td>
+                <td th:text = "${link.suppliedBy}"></td>
+            <td><input type="text" th:value="${orders.quantity}" name="quantity"/></td>
+            <td>
+                <a th:href="@{ordering/{id}(id=${link.id})}"><button type="button" class="btn btn-primary">Order</button></a>
+            </td>
+        </tr>
+    </table>
+    </div>
+    </div>
+</body>
+</html>
